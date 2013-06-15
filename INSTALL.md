@@ -6,11 +6,9 @@ To build and use the demo of the engine you need SDL and CMAKE installed.
 Follow these steps to build and run the demo:
 
 ```
- mkdir build
- cd build
-  cmake ..
-  make
-  ./isoengine
+ cmake .
+ make
+ ./isoengine
 ```
 
 You can run 'make install' with root privileges to install the project
