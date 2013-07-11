@@ -79,14 +79,15 @@ void Engine::draw (SDL_Surface *screen)
 
   if (tile_list.size() > 0)
   {
-    int i, j;
+    int i, j, ct = 0;
 
     for(i = 0; i < vert_number; i++)
     {
       for(j = 0; j < horiz_number; j++)
       {
         if (tile_matrix[i][j])
-          Wrapper::draw_image (screen, tile_list[tile_matrix[i][j] - 1], (int)(camera->get_x() + (j - i) * width / 2), (int)(camera->get_y() + (i + j) * height / 2)- height_matrix[i][j], (int)width, (int)height);
+          Wrapper::draw_image (screen, tile_list[tile_matrix[i][j] - 1], (int)(camera->get_x() + (j - i) * width / 2), (int)(camera->get_y() + (i + j) * height / 2) - height_matrix[i][j], (int)width, (int)height);
+
         if (!render_queue.empty() && render_queue.top()->y == i && render_queue.top()->x == j)
         {
           Drawable *object = render_queue.top();

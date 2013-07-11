@@ -6,8 +6,3 @@ Drawable::Drawable (SDL_Surface *img, int _width, int _height)
   width = _width;
   height = _height;
 }
-
-bool Drawable::operator < (Drawable *b)
-{
-  return b->y < y;
-}

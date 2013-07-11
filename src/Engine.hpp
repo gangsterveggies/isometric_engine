@@ -38,7 +38,7 @@ class Engine
     double width;
     double height;
 
-    priority_queue <Drawable *> render_queue;
+    priority_queue <Drawable *, vector<Drawable *>, Drawable::cmp_drawable> render_queue;
 
     int** tile_matrix;
     int** height_matrix;
