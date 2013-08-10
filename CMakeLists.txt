@@ -1,3 +1,5 @@
+SET (PROJECT_NAME "isoengine")
+
 project (isoengine)
 cmake_minimum_required (VERSION 2.8)
 
@@ -10,17 +12,9 @@ link_libraries (
   SDLmain
 )
 
-add_library (Wrapper.o src/Wrapper.cpp)
-add_library (Camera.o src/Camera.cpp)
-add_library (Drawable.o src/Drawable.cpp)
-add_library (MapParser.o src/MapParser.cpp)
-add_library (Engine.o src/Engine.cpp)
+file (GLOB_RECURSE ISOENGINE_SOURCES "src/*.cpp")
+file (GLOB_RECURSE ISOENGINE_INCLUDES "src/*.hpp")
 
-link_libraries (Engine.o)
-
-add_executable (isoengine src/Game.cpp)
-target_link_libraries (isoengine Wrapper.o)
-target_link_libraries (isoengine Camera.o)
-target_link_libraries (isoengine Drawable.o)
-target_link_libraries (isoengine MapParser.o)
-target_link_libraries (isoengine Engine.o)
+include_directories (ISOENGINE_INCLUDES)
+add_executable (${PROJECT_NAME} ${ISOENGINE_SOURCES})
+target_link_libraries (${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIRARY})
