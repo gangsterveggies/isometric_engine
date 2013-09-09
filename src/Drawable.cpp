@@ -1,5 +1,9 @@
 #include "Drawable.hpp"
 
+Drawable::Drawable ()
+{
+}
+
 Drawable::Drawable (SDL_Surface *img, int _width, int _height)
 {
   surface = img;

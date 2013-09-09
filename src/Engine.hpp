@@ -6,6 +6,7 @@
 #include "Wrapper.hpp"
 #include "Camera.hpp"
 #include "Drawable.hpp"
+#include <math.h>
 #include <vector>
 #include <queue>
 

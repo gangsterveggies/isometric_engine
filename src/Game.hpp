@@ -7,6 +7,7 @@
 #include "Wrapper.hpp"
 #include "MapParser.hpp"
 #include "Drawable.hpp"
+#include "Animable.hpp"
 #include "Engine.hpp"
 
 using namespace std;
@@ -20,6 +21,7 @@ class Game
 
     SDL_Surface *screen;
     Drawable *obj;
+    Animable *obj2;
 
     Engine *engine;
 
