@@ -15,8 +15,8 @@ link_libraries (
 file (GLOB_RECURSE ISOENGINE_SOURCES "src/*.cpp")
 file (GLOB_RECURSE ISOENGINE_INCLUDES "src/*.hpp")
 
-list (REMOVE_ITEM ISOENGINE_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/src/sdl-wrapper/Demo.cpp)
-list (REMOVE_ITEM ISOENGINE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/src/sdl-wrapper/Demo.cpp)
+list (REMOVE_ITEM ISOENGINE_SOURCES "src/sdl_wrapper/Demo.cpp")
+list (REMOVE_ITEM ISOENGINE_INCLUDES "src/sdl_wrapper/Demo.hpp")
 
 include_directories (ISOENGINE_INCLUDES)
 add_executable (${PROJECT_NAME} ${ISOENGINE_SOURCES})
