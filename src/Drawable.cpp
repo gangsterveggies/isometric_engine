@@ -1,5 +1,7 @@
 #include "Drawable.hpp"
 
+using namespace isometric_engine;
+
 Drawable::Drawable ()
 {
 }

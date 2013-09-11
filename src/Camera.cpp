@@ -1,5 +1,7 @@
 #include "Camera.hpp"
 
+using namespace isometric_engine;
+
 Camera::Camera (int _width, int _height)
 {
   screen_width = _width;

@@ -4,13 +4,16 @@
 #include <SDL/SDL.h>
 
 #include <string.h>
-#include "Wrapper.hpp"
+
+#include "sdl_wrapper/Wrapper.hpp"
 #include "MapParser.hpp"
 #include "Drawable.hpp"
 #include "Animable.hpp"
 #include "Engine.hpp"
 
 using namespace std;
+using namespace sdl_wrapper;
+using namespace isometric_engine;
 
 class Game
 {

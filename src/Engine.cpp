@@ -4,8 +4,12 @@
 
 #include "Engine.hpp"
 
-Engine::Engine (int _tile_size, int _horiz_number, int _vert_number, int _width, int _height)
+using namespace isometric_engine;
+
+Engine::Engine (SDL_Surface *screen, int _tile_size, int _horiz_number, int _vert_number, int _width, int _height)
 {
+  Wrapper::set_screen(screen);
+
   tile_size = _tile_size;
   horiz_number = _horiz_number;
   vert_number = _vert_number;
@@ -73,9 +77,9 @@ void Engine::insert_tile (SDL_Surface *tile)
   tile_list.push_back(tile);
 }
 
-void Engine::draw (SDL_Surface *screen)
+void Engine::draw ()
 {
-  Wrapper::clear_screen(screen, 0, 0, 0);
+  Wrapper::clear_screen(0, 0, 0);
 
   if (tile_list.size() > 0)
   {
@@ -86,12 +90,12 @@ void Engine::draw (SDL_Surface *screen)
       for(j = 0; j < horiz_number; j++)
       {
         if (tile_matrix[i][j])
-          Wrapper::draw_image (screen, tile_list[tile_matrix[i][j] - 1], (int)(camera->get_x() + (j - i) * width / 2), (int)(camera->get_y() + (i + j) * height / 2) - height_matrix[i][j], (int)width, (int)height);
+          Wrapper::draw_image (tile_list[tile_matrix[i][j] - 1], (int)(camera->get_x() + (j - i) * width / 2), (int)(camera->get_y() + (i + j) * height / 2) - height_matrix[i][j], (int)width, (int)height);
 
         while (!render_queue.empty() && (int)render_queue.top()->y == i && (int)render_queue.top()->x == j)
         {
           Drawable *object = render_queue.top();
-          Wrapper::draw_image(screen, object->surface, (int)(camera->get_x() + (object->x - object->y) * width / 2), (int)(camera->get_y() - object->height + (object->y + object->x + 1) * height / 2 - height_matrix[(int)object->y][(int)object->x]), object->width, object->height);
+          Wrapper::draw_image(object->surface, (int)(camera->get_x() + (object->x - object->y) * width / 2), (int)(camera->get_y() - object->height + (object->y + object->x + 1) * height / 2 - height_matrix[(int)object->y][(int)object->x]), object->width, object->height);
           render_queue.pop();
         }
       }
@@ -104,7 +108,7 @@ void Engine::draw (SDL_Surface *screen)
   }  
 }
 
-void Engine::draw (SDL_Surface *screen, Drawable *object)
+void Engine::draw (Drawable *object)
 {
   if (object->x < 0 || object->x >= horiz_number || object->y < 0 || object->y >= vert_number)
     return;
