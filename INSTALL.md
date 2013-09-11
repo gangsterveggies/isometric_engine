@@ -6,9 +6,13 @@ To build and use the demo of the engine you need SDL and CMAKE installed.
 Follow these steps to build and run the demo:
 
 ```
- cmake .
- make
- ./isoengine
+git clone git@github.com:gangsterveggies/isometric_engine.git
+cd isometric_engine
+git submodule init
+git submodule update
+cmake .
+make
+./isoengine
 ```
 
 You can run 'make install' with root privileges to install the project
