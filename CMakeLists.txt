@@ -15,6 +15,9 @@ link_libraries (
 file (GLOB_RECURSE ISOENGINE_SOURCES "src/*.cpp")
 file (GLOB_RECURSE ISOENGINE_INCLUDES "src/*.hpp")
 
+list (REMOVE_ITEM ISOENGINE_SOURCES "src/sdl-wrapper/Demo.cpp")
+list (REMOVE_ITEM ISOENGINE_INCLUDES "src/sdl-wrapper/Demo.hpp")
+
 include_directories (ISOENGINE_INCLUDES)
 add_executable (${PROJECT_NAME} ${ISOENGINE_SOURCES})
 target_link_libraries (${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIRARY})
