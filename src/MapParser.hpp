@@ -7,34 +7,38 @@
 #include <vector>
 #include <algorithm>
 
+#include "sdl_wrapper/Wrapper.hpp"
+
 using namespace std;
+using namespace sdl_wrapper;
 
-#include "Wrapper.hpp"
-
-class MapParser
+namespace isometric_engine
 {
-  public:
-    static void load_file (FILE* _map_file);
-    static void parse_file ();
+  class MapParser
+  {
+    public:
+      static void load_file (FILE* _map_file);
+      static void parse_file ();
 
-    static int get_horiz ();
-    static int get_vert ();
+      static int get_horiz ();
+      static int get_vert ();
 
-    static int get_tile (int x, int y);
-    static int get_height (int x, int y);
+      static int get_tile (int x, int y);
+      static int get_height (int x, int y);
 
-    static SDL_Surface* next ();
-    static bool has_next ();
-    
-  private:
-    static vector <SDL_Surface *> tile_list;
-    static FILE* map_file;
+      static SDL_Surface* next ();
+      static bool has_next ();
 
-    static int** tile_matrix;
-    static int** height_matrix;
+    private:
+      static vector <SDL_Surface *> tile_list;
+      static FILE* map_file;
 
-    static int horiz_number;
-    static int vert_number;
-};
+      static int** tile_matrix;
+      static int** height_matrix;
+
+      static int horiz_number;
+      static int vert_number;
+  };
+}
 
 #endif

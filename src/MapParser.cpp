@@ -1,5 +1,7 @@
 #include "MapParser.hpp"
 
+using namespace isometric_engine;
+
 vector <SDL_Surface *> MapParser::tile_list;
 FILE* MapParser::map_file;
 

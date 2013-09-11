@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-#include "Wrapper.hpp"
+#include "sdl_wrapper/Wrapper.hpp"
 #include "Camera.hpp"
 #include "Drawable.hpp"
 #include <math.h>
@@ -13,40 +13,44 @@
 #define ISO_CONST 0.5773502691896257
 
 using namespace std;
+using namespace sdl_wrapper;
 
-class Engine
+namespace isometric_engine
 {
-  public:
-    Engine (int _tile_size, int _horiz_number, int _vert_number, int _width, int _height);
+  class Engine
+  {
+    public:
+      Engine (SDL_Surface *screen, int _tile_size, int _horiz_number, int _vert_number, int _width, int _height);
 
-    void insert_tile (SDL_Surface *tile);
-    void draw (SDL_Surface *screen);
-    void draw (SDL_Surface *screen, Drawable *object);
-    void set_tile (int x, int y, int type);
-    void set_height (int x, int y, int val);
-    int get_height (int x, int y);
-    int get_tile (int x, int y);
-    Camera *camera;
-    
-  private:
-    int tile_size;
-    int horiz_number;
-    int vert_number;
-    
-    int screen_width;
-    int screen_height;
+      void insert_tile (SDL_Surface *tile);
+      void draw ();
+      void draw (Drawable *object);
+      void set_tile (int x, int y, int type);
+      void set_height (int x, int y, int val);
+      int get_height (int x, int y);
+      int get_tile (int x, int y);
+      Camera *camera;
 
-    double width;
-    double height;
+    private:
+      int tile_size;
+      int horiz_number;
+      int vert_number;
 
-    priority_queue <Drawable *, vector<Drawable *>, Drawable::cmp_drawable> render_queue;
+      int screen_width;
+      int screen_height;
 
-    int** tile_matrix;
-    int** height_matrix;
+      double width;
+      double height;
 
-    vector <SDL_Surface *> tile_list;
+      priority_queue <Drawable *, vector<Drawable *>, Drawable::cmp_drawable> render_queue;
 
-    void init_tiles ();
-};
+      int** tile_matrix;
+      int** height_matrix;
+
+      vector <SDL_Surface *> tile_list;
+
+      void init_tiles ();
+  };
+}
 
 #endif
