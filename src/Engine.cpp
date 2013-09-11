@@ -6,8 +6,10 @@
 
 using namespace isometric_engine;
 
-Engine::Engine (int _tile_size, int _horiz_number, int _vert_number, int _width, int _height)
+Engine::Engine (SDL_Surface *screen, int _tile_size, int _horiz_number, int _vert_number, int _width, int _height)
 {
+  Wrapper::set_screen(screen);
+
   tile_size = _tile_size;
   horiz_number = _horiz_number;
   vert_number = _vert_number;
@@ -75,9 +77,8 @@ void Engine::insert_tile (SDL_Surface *tile)
   tile_list.push_back(tile);
 }
 
-void Engine::draw (SDL_Surface *screen)
+void Engine::draw ()
 {
-  Wrapper::set_screen(screen);
   Wrapper::clear_screen(0, 0, 0);
 
   if (tile_list.size() > 0)
@@ -107,7 +108,7 @@ void Engine::draw (SDL_Surface *screen)
   }  
 }
 
-void Engine::draw (SDL_Surface *screen, Drawable *object)
+void Engine::draw (Drawable *object)
 {
   if (object->x < 0 || object->x >= horiz_number || object->y < 0 || object->y >= vert_number)
     return;

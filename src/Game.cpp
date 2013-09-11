@@ -38,7 +38,7 @@ void Game::setup()
   MapParser::parse_file();
   fclose(mfile);
 
-  engine = new Engine (64, MapParser::get_horiz(), MapParser::get_vert(), 800, 600);
+  engine = new Engine (screen, 64, MapParser::get_horiz(), MapParser::get_vert(), 800, 600);
 
   while (MapParser::has_next())
   {
@@ -96,10 +96,10 @@ void Game::run()
       running = false;
     }
 
-    engine->draw(screen, obj2);  
-    engine->draw(screen, obj);
+    engine->draw(obj2);  
+    engine->draw(obj);
   
-    engine->draw(screen);
+    engine->draw();
 
     SDL_Flip(screen);
   }

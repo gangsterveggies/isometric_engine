@@ -20,11 +20,11 @@ namespace isometric_engine
   class Engine
   {
     public:
-      Engine (int _tile_size, int _horiz_number, int _vert_number, int _width, int _height);
+      Engine (SDL_Surface *screen, int _tile_size, int _horiz_number, int _vert_number, int _width, int _height);
 
       void insert_tile (SDL_Surface *tile);
-      void draw (SDL_Surface *screen);
-      void draw (SDL_Surface *screen, Drawable *object);
+      void draw ();
+      void draw (Drawable *object);
       void set_tile (int x, int y, int type);
       void set_height (int x, int y, int val);
       int get_height (int x, int y);
