@@ -1,0 +1,3 @@
+[submodule "src/sdl-wapper"]
+	path = src/sdl-wapper
+	url = git://github.com/davidgomes/sdl-wrapper.git

@@ -1,5 +1,7 @@
 #include "Animable.hpp"
 
+using namespace isometric_engine;
+
 Animable::Animable (vector<SDL_Surface*> _img_list, int _width, int _height)
 {
   img_list = _img_list;
