@@ -114,3 +114,13 @@ void Engine::draw (Drawable *object)
     return;
   render_queue.push (object);
 }
+
+int Engine::get_iso_x (float x, float y)
+{
+  return (int)(camera->get_x() + (x - y) * width / 2);
+}
+
+int Engine::get_iso_y (float x, float y)
+{
+  return (int)(camera->get_y() + (y + x + 1) * height / 2 - height_matrix[(int)y][(int)x]);
+}

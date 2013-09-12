@@ -29,6 +29,8 @@ namespace isometric_engine
       void set_height (int x, int y, int val);
       int get_height (int x, int y);
       int get_tile (int x, int y);
+      int get_iso_x (float x, float y);
+      int get_iso_y (float x, float y);
       Camera *camera;
 
     private:
