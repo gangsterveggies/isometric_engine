@@ -30,8 +30,8 @@ void Game::setup()
   obj2_list.push_back(obj_test);
   obj2_list.push_back(obj_test2);
   obj2 = new Animable (obj2_list, 60, 40);
-  obj2->x = 2.2;
-  obj2->y = 2.2;
+  obj2->x = 2.1;
+  obj2->y = 2.1;
 
   FILE* mfile = fopen ("res/testmap.isomap","r");
   MapParser::load_file(mfile);
@@ -70,16 +70,16 @@ void Game::run()
     switch (event.type) {
       case SDL_KEYDOWN:
         if (strcmp(SDL_GetKeyName(event.key.keysym.sym), "up") == 0)
-            obj->y--;
+            obj->y -= 0.1;
 //          engine->camera->set_y (engine->camera->get_raw_y() - 10);
         else if (strcmp(SDL_GetKeyName(event.key.keysym.sym), "right") == 0)
-            obj->x++;
+            obj->x += 0.1;
 //          engine->camera->set_x (engine->camera->get_raw_x() + 10);
         else if (strcmp(SDL_GetKeyName(event.key.keysym.sym), "down") == 0)
-            obj->y++;
+            obj->y += 0.1;
 //          engine->camera->set_y (engine->camera->get_raw_y() + 10);
         else if (strcmp(SDL_GetKeyName(event.key.keysym.sym), "left") == 0)
-            obj->x--;
+            obj->x -= 0.1;
 //          engine->camera->set_x (engine->camera->get_raw_x() - 10);
         else if (strcmp(SDL_GetKeyName(event.key.keysym.sym), "escape") == 0)
           running = false;

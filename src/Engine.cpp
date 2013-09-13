@@ -92,10 +92,10 @@ void Engine::draw ()
         if (tile_matrix[i][j])
           Wrapper::draw_image (tile_list[tile_matrix[i][j] - 1], (int)(camera->get_x() + (j - i) * width / 2), (int)(camera->get_y() + (i + j) * height / 2) - height_matrix[i][j], (int)width, (int)height);
 
-        while (!render_queue.empty() && (int)render_queue.top()->y == i && (int)render_queue.top()->x == j)
+        while (!render_queue.empty() && (int)ceil(render_queue.top()->y) == i && (int)ceil(render_queue.top()->x) == j)
         {
           Drawable *object = render_queue.top();
-          Wrapper::draw_image(object->surface, (int)(camera->get_x() + (object->x - object->y) * width / 2), (int)(camera->get_y() - object->height + (object->y + object->x + 1) * height / 2 - height_matrix[(int)object->y][(int)object->x]), object->width, object->height);
+          Wrapper::draw_image(object->surface, (int)ceil(camera->get_x() + (object->x - object->y) * width / 2), (int)ceil(camera->get_y() - object->height + (object->y + object->x + 1) * height / 2 - height_matrix[(int)object->y][(int)object->x]), object->width, object->height);
           render_queue.pop();
         }
       }
@@ -117,10 +117,10 @@ void Engine::draw (Drawable *object)
 
 int Engine::get_iso_x (float x, float y)
 {
-  return (int)(camera->get_x() + (x - y) * width / 2);
+  return (int)ceil(camera->get_x() + (x - y) * width / 2);
 }
 
 int Engine::get_iso_y (float x, float y)
 {
-  return (int)(camera->get_y() + (y + x + 1) * height / 2 - height_matrix[(int)y][(int)x]);
+  return (int)ceil(camera->get_y() + (y + x + 1) * height / 2 - height_matrix[(int)y][(int)x]);
 }
