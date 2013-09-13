@@ -20,4 +20,4 @@ list (REMOVE_ITEM ISOENGINE_INCLUDES ${CMAKE_CURRENT_SOURCE_DIR}/src/sdl_wrapper
 
 include_directories (ISOENGINE_INCLUDES)
 add_executable (${PROJECT_NAME} ${ISOENGINE_SOURCES})
-target_link_libraries (${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIRARY})
+target_link_libraries (${PROJECT_NAME} ${SDL_LIBRARY} ${SDLIMAGE_LIBRARY})
